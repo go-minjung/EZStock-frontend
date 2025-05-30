@@ -1,26 +1,3 @@
-/*import { Text, View } from "react-native";
-
-export default function OrderScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>발주 관리 페이지</Text>
-    </View>
-  );
-}*/
-
-/*import { Text, View } from "react-native";
-
-export default function OrderScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>발주 관리 페이지</Text>
-    </View>
-  );
-}*/
-
-// app/order.tsx
-
-// app/order.tsx
 import React, { useState } from 'react';
 import {
   View,
@@ -36,6 +13,7 @@ import { useRouter } from 'expo-router';
 export default function OrderScreen() {
   const router = useRouter();
   const [search, setSearch] = useState('');
+  const [selectedProductId, setSelectedProductId] = useState<number | null>(null);
 
   const productList = [
     { id: 1, image: require('../assets/images/product1.png') },
@@ -66,15 +44,30 @@ export default function OrderScreen() {
         {filtered.map((product) => (
           <TouchableOpacity
             key={product.id}
-            onPress={() => router.push('/orderDone')}
-            style={styles.cardWrapper}
+            onPress={() => setSelectedProductId(product.id)}
+            style={[
+              styles.cardWrapper,
+              selectedProductId === product.id && styles.selectedCard,
+            ]}
           >
             <Image source={product.image} style={styles.cardImage} />
           </TouchableOpacity>
         ))}
       </ScrollView>
 
-      <TouchableOpacity onPress={() => router.push('/orderDone')} style={styles.buttonImageWrapper}>
+      <TouchableOpacity
+        disabled={selectedProductId === null}
+        onPress={() =>
+          router.push({
+            pathname: '/orderModal',
+            params: { id: selectedProductId?.toString() },
+          })
+        }
+        style={[
+          styles.buttonImageWrapper,
+          selectedProductId === null && { opacity: 0.3 },
+        ]}
+      >
         <Image
           source={require('../assets/images/button_start_balju.png')}
           style={styles.buttonImage}
@@ -86,7 +79,12 @@ export default function OrderScreen() {
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#f9f9f9', padding: 16 },
-  header: { fontSize: 20, fontWeight: 'bold', textAlign: 'center', marginBottom: 4 },
+  header: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginBottom: 4,
+  },
   search: {
     backgroundColor: '#fff',
     borderRadius: 8,
@@ -102,6 +100,11 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     overflow: 'hidden',
     marginBottom: 8,
+    borderWidth: 2,
+    borderColor: 'transparent',
+  },
+  selectedCard: {
+    borderColor: '#7aa8b7',
   },
   cardImage: {
     width: '100%',
