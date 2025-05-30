@@ -22,7 +22,15 @@ export default function OrderScreen() {
 
 // app/order.tsx
 import React, { useState } from 'react';
-import { View, Text, TextInput, ScrollView, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  ScrollView,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
 import { useRouter } from 'expo-router';
 
 export default function OrderScreen() {
@@ -36,6 +44,10 @@ export default function OrderScreen() {
     { id: 4, image: require('../assets/images/product4.png') },
     { id: 5, image: require('../assets/images/product5.png') },
   ];
+
+  const filtered = productList.filter((item) =>
+    search === '' || item.image.toString().toLowerCase().includes(search.toLowerCase())
+  );
 
   return (
     <View style={styles.container}>
@@ -51,10 +63,10 @@ export default function OrderScreen() {
       <Text style={styles.subtitle}>재고 내역</Text>
 
       <ScrollView style={styles.scrollArea}>
-        {productList.map((product) => (
+        {filtered.map((product) => (
           <TouchableOpacity
             key={product.id}
-            onPress={() => router.push('/orderModal')}
+            onPress={() => router.push('/orderDone')}
             style={styles.cardWrapper}
           >
             <Image source={product.image} style={styles.cardImage} />
@@ -62,8 +74,11 @@ export default function OrderScreen() {
         ))}
       </ScrollView>
 
-      <TouchableOpacity style={styles.button} onPress={() => router.push('/orderModal')}>
-        <Text style={styles.buttonText}>발주 시작하기</Text>
+      <TouchableOpacity onPress={() => router.push('/orderDone')} style={styles.buttonImageWrapper}>
+        <Image
+          source={require('../assets/images/button_start_balju.png')}
+          style={styles.buttonImage}
+        />
       </TouchableOpacity>
     </View>
   );
@@ -71,7 +86,7 @@ export default function OrderScreen() {
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#f9f9f9', padding: 16 },
-  header: { fontSize: 20, fontWeight: 'bold', textAlign: 'center', marginBottom: 8 },
+  header: { fontSize: 20, fontWeight: 'bold', textAlign: 'center', marginBottom: 4 },
   search: {
     backgroundColor: '#fff',
     borderRadius: 8,
@@ -81,28 +96,26 @@ const styles = StyleSheet.create({
     borderColor: '#ddd',
     marginBottom: 16,
   },
-  subtitle: { fontSize: 16, fontWeight: 'bold', marginBottom: 12 },
-  scrollArea: {
-    flex: 1,
-  },
+  subtitle: { fontSize: 16, fontWeight: 'bold', marginBottom: 4 },
+  scrollArea: { flex: 1 },
   cardWrapper: {
-    backgroundColor: '#fff',
     borderRadius: 10,
     overflow: 'hidden',
-    marginBottom: 6, // 카드 사이 간격 줄임
+    marginBottom: 8,
   },
   cardImage: {
     width: '100%',
-    height: 64, // 딱 보기 좋은 카드 높이
+    height: 120,
+    resizeMode: 'contain',
+    borderRadius: 8,
+  },
+  buttonImageWrapper: {
+    alignItems: 'center',
+    marginTop: 12,
+  },
+  buttonImage: {
+    width: 300,
+    height: 60,
     resizeMode: 'contain',
   },
-  button: {
-    backgroundColor: '#7aa8b7',
-    paddingVertical: 14,
-    borderRadius: 10,
-    alignItems: 'center',
-    marginTop: 10,
-  },
-  buttonText: { color: 'white', fontWeight: 'bold', fontSize: 16 },
 });
-
