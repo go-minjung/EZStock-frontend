@@ -1,13 +1,13 @@
 import Button from "@/components/Button";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 
 export default function OrderDoneScreen() {
   const router = useRouter();
 
   return (
-    <View style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={() => router.push("/orderSummary")}>
       <View style={styles.content}>
         <Ionicons name="checkmark-outline" size={64} color="white" />
         <Text style={styles.text}>발주 완료!</Text>
@@ -20,7 +20,7 @@ export default function OrderDoneScreen() {
           onPress={() => router.push("/")}
         />
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
 
