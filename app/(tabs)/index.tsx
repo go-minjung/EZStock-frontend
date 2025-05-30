@@ -1,5 +1,6 @@
 import { Image } from "expo-image";
-import { Platform, StyleSheet } from "react-native";
+import { Link } from "expo-router";
+import { Platform, Pressable, StyleSheet } from "react-native";
 
 import { HelloWave } from "@/components/HelloWave";
 import ParallaxScrollView from "@/components/ParallaxScrollView";
@@ -21,6 +22,29 @@ export default function HomeScreen() {
         <ThemedText type="title">홈</ThemedText>
         <HelloWave />
       </ThemedView>
+
+      {/* 🔗 Stock Page 이동 버튼 추가 */}
+      <ThemedView style={styles.stepContainer}>
+        <ThemedText type="subtitle">📦 재고 확인하러 가기</ThemedText>
+        <Link href="/stock" asChild>
+          <Pressable style={styles.stockButton}>
+            <ThemedText type="defaultSemiBold" style={{ color: "#fff" }}>
+              Go to Stock Page →
+            </ThemedText>
+          </Pressable>
+        </Link>
+
+        <Link href="/manage" asChild>
+          <Pressable style={styles.stockButton}>
+            <ThemedText type="defaultSemiBold" style={{ color: "#fff" }}>
+              Go to Manage Page →
+            </ThemedText>
+          </Pressable>
+        </Link>
+
+      </ThemedView>
+
+      {/* 기존 내용들 */}
       <ThemedView style={styles.stepContainer}>
         <ThemedText type="subtitle">Step 1: Try it</ThemedText>
         <ThemedText>
@@ -37,12 +61,14 @@ export default function HomeScreen() {
           to open developer tools.
         </ThemedText>
       </ThemedView>
+
       <ThemedView style={styles.stepContainer}>
         <ThemedText type="subtitle">Step 2: Explore</ThemedText>
         <ThemedText>
           {`Tap the Explore tab to learn more about what's included in this starter app.`}
         </ThemedText>
       </ThemedView>
+
       <ThemedView style={styles.stepContainer}>
         <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
         <ThemedText>
@@ -76,5 +102,12 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     position: "absolute",
+  },
+  stockButton: {
+    backgroundColor: "#007EA7",
+    paddingVertical: 12,
+    paddingHorizontal: 16,
+    borderRadius: 8,
+    alignItems: "center",
   },
 });
