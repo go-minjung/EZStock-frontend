@@ -1,4 +1,4 @@
-import { Search } from 'lucide-react-native'; // 꼭 이걸 써야 함!
+import { Search } from 'lucide-react-native'; 
 import { FC } from 'react';
 import { StyleSheet, TextInput, View } from 'react-native';
 
