@@ -1,13 +1,16 @@
 import Button from "@/components/Button";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 export default function OrderDoneScreen() {
   const router = useRouter();
 
   return (
-    <TouchableOpacity style={styles.container} onPress={() => router.push("/orderSummary")}>
+    <TouchableOpacity
+      style={styles.container}
+      onPress={() => router.push("/orderSummary")}
+    >
       <View style={styles.content}>
         <Ionicons name="checkmark-outline" size={64} color="white" />
         <Text style={styles.text}>발주 완료!</Text>
@@ -45,5 +48,6 @@ const styles = StyleSheet.create({
   buttonWrapper: {
     width: "100%",
     paddingHorizontal: 20,
+    marginBottom: 40,
   },
 });

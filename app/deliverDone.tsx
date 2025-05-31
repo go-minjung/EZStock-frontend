@@ -45,5 +45,6 @@ const styles = StyleSheet.create({
   buttonWrapper: {
     width: "100%",
     paddingHorizontal: 20,
+    marginBottom: 40,
   },
 });
