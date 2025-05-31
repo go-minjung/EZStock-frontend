@@ -4,12 +4,12 @@ import CustomButton from "../components/Button";
 import IconSearch from "../components/ui/IconSearch";
 
 export default function ManageScreen() {
-  const router = useRouter(); 
+  const router = useRouter();
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
       {/* 헤더 */}
-      <Text style={styles.header}>Stock</Text>
+      <Text style={styles.header}>Manage</Text>
 
       {/* 검색창 */}
       <View style={styles.search}>
@@ -50,7 +50,7 @@ export default function ManageScreen() {
       {/* AI 버튼 */}
       <CustomButton
         title="AI Manager 이용하기"
-        onPress={() => router.push("/ai")} 
+        onPress={() => router.push("/ai")}
       />
     </ScrollView>
   );
@@ -58,7 +58,8 @@ export default function ManageScreen() {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 10,
+    padding: 20,
+    paddingTop: 15,
     backgroundColor: "#F8F8F8",
   },
   header: {
@@ -70,11 +71,12 @@ const styles = StyleSheet.create({
   search: {
     marginBottom: 3,
   },
+
   stockImage: {
-    width: 750,
-    height: 120,
-    resizeMode: "contain",
-    borderRadius: 12,
+    width: "100%",
+    height: 140,
+    resizeMode: "cover",
+    borderRadius: 10,
     marginBottom: 12,
     alignSelf: "center",
   },
@@ -82,13 +84,13 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 80,
     borderRadius: 12,
-    marginBottom: 16,
+    marginBottom: 10,
   },
   sectionTitle: {
     fontSize: 16,
     fontWeight: "bold",
     marginTop: 16,
-    marginBottom: 4,
+    marginBottom: 0,
   },
   sectionSub: {
     fontSize: 12,
