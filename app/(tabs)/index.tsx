@@ -22,7 +22,7 @@ export default function HomeScreen() {
       {/* 바코드 출고 */}
       <TouchableOpacity
         style={styles.barcodeBox}
-        onPress={() => router.push("/barcodeScan")}
+        // onPress={() => router.push("/barcodeScan")}
       >
         <Image
           source={require("../../assets/images/barcode.png")}
