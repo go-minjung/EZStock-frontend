@@ -1,6 +1,8 @@
+import IconSearch from "@/components/ui/IconSearch";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+
 type IconName =
   | "cube-outline"
   | "create-outline"
@@ -19,10 +21,14 @@ export default function HomeScreen() {
         <Ionicons name="notifications-outline" size={22} />
       </View>
 
+      <View style={styles.searchContainer}>
+        <IconSearch />
+      </View>
+
       {/* 바코드 출고 */}
       <TouchableOpacity
         style={styles.barcodeBox}
-        // onPress={() => router.push("/barcodeScan")}
+        onPress={() => router.push("/barcodeScan")}
       >
         <Image
           source={require("../../assets/images/barcode.png")}
@@ -109,9 +115,12 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginBottom: 24,
+    marginBottom: 20,
   },
   title: { fontSize: 20, fontWeight: "bold", color: "#578CA9" },
+  searchContainer: {
+    marginBottom: 1,
+  },
   barcodeBox: {
     backgroundColor: "white",
     borderRadius: 12,
@@ -132,7 +141,7 @@ const styles = StyleSheet.create({
   menuButton: {
     width: "48%",
     backgroundColor: "white",
-    padding: 25,
+    padding: 20,
     borderRadius: 12,
     alignItems: "center",
   },
