@@ -1,6 +1,6 @@
-import { Search } from 'lucide-react-native';
-import { FC } from 'react';
-import { StyleSheet, TextInput, View } from 'react-native';
+import { Search } from "lucide-react-native";
+import { FC } from "react";
+import { StyleSheet, TextInput, View } from "react-native";
 
 const IconSearch: FC = () => {
   return (
@@ -17,13 +17,13 @@ const IconSearch: FC = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingHorizontal: 16,
-    paddingVertical: 12,
-    backgroundColor: '#fff',
-    borderRadius: 16,
-    shadowColor: '#000',
+    flexDirection: "row",
+    alignItems: "center",
+    paddingHorizontal: 12,
+    paddingVertical: 10,
+    backgroundColor: "#fff",
+    borderRadius: 10,
+    shadowColor: "#000",
     shadowOpacity: 0.05,
     shadowRadius: 4,
     elevation: 2,
@@ -32,9 +32,9 @@ const styles = StyleSheet.create({
   input: {
     flex: 1,
     fontSize: 16,
-    paddingVertical: 6,
+    paddingVertical: 2,
     paddingRight: 8,
-    color: '#333',
+    color: "#333",
   },
 });
 
