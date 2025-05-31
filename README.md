@@ -28,10 +28,6 @@ npm install
 ```
 프로젝트에 필요한 패키지를 모두 설치합니다.
 
----
-
-
-### 📁 3. 의존성 설치
 
 ```bash
 npx expo install expo-camera expo-barcode-scanner
@@ -39,7 +35,6 @@ npx expo install expo-camera expo-barcode-scanner
 카메라 및 바코드 스캔 기능을 위한 Expo 모듈입니다.
 
 ---
-
 
 ### ▶️ 4. 앱 실행
 
